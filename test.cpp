@@ -1,32 +1,54 @@
-#include <stdio.h>
-#include <conio.h> 
-void troca (int *i, int *j) {
-int temp;
-temp = *i;
-*i = *j;
-*j = temp;
-printf("Valor de p: %d.\n", temp);
-}
-int main() {
-	int x,y = 200, *p;
-	x = 100;
-	p = &x;
-	printf("Valor de p: %d.\n", *p);
-	
-	printf("a) falta os includes,foi usado (“,”) no printf, main nao pode ser void tem q ser int, o int* p nao pode recerber um int e seim seu endereco \n b) a variavel temporaria temp criada na funcao troca n pode ser um ponteiro do tipo *int tem que ser um int\nc) a variavel b esta criando uma char com(”)" );
-	troca(&x,&y);
-	printf("Valor de x e y: %d , %d.\n",x, y );
-
-	char *a,*b;
-	a="abacaxi";
-	b="uva";
-	if(a<b){
-	printf("%s vem antes de %s no dicionário",a,b);
-	} 
-	else{
-	printf("%s vem depois de %s no dicionário", a,b);
-	}
+#include<stdio.h>
+#include<string.h>
+#include <conio.h>
+struct disciplina{
+	char nome[30];
+	int cargaHoraria;
+};
+struct aluno{
+	int matricula;
+	char nome[30];
+}; 
+struct notas{
+	int A1, A2;
+	float Media;
+};
+struct matricula{ 
+	struct aluno *pAluno; // Armazena o ponteiro para um aluno
+	struct disciplina *pDisciplina; // Armazena o ponteiro para uma disciplina
+	struct notas *pNotas; // Armazena o ponteiro para as notas 
+};
+main ( ) 
+{
+	struct disciplina infoDisciplina;
+	struct aluno infoAluno;
+	struct matricula infoMatricula;
+	struct notas infoNotas;
+	printf("Digite o nome da disciplina \n");
+	gets(infoDisciplina.nome);
+	fflush(stdin);
+	printf("Digite a carga horaria da disciplina \n");
+	scanf("%d",&infoDisciplina.cargaHoraria);
+	fflush(stdin);
+	printf("Digite o nome do aluno \n");
+	gets(infoAluno.nome);
+	fflush(stdin);
+	printf("Digite a matricula do aluno \n");
+	scanf("%d",&infoAluno.matricula);
+	fflush(stdin);
+	infoMatricula.pAluno = &infoAluno;
+	infoMatricula.pDisciplina = &infoDisciplina;
+	infoMatricula.pNotas = &infoNotas;
+	printf("Digite a nota de A1 \n");
+	scanf("%d",&infoMatricula.pNotas->A1); 
+	fflush(stdin);
+	printf("Digite a nota de A2 \n");
+	scanf("%d",&infoNotas.A2);
+	fflush(stdin);
+	printf("A1 %d \n",infoNotas.A1);
+	printf("A2 %d \n",infoMatricula.pNotas->A2);
+	infoNotas.Media = (infoNotas.A1 + infoNotas.A2) / 2;
+	printf("A media do aluno %s e: %f \n",infoMatricula.pAluno->nome, infoMatricula.pNotas->Media);
 	getch();
-	
 }
 
