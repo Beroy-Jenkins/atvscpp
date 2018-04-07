@@ -17,6 +17,7 @@ int main(){
 	printf("XXXXXXXXXX\nX\nX\nX\nXXXXXXXXXX\n");
 	// Declarações
 	int nLista = 0;
+	int ntLista = 0;
 	celula *pLista[nLista];
 	int continuar = 0;
 
@@ -26,13 +27,13 @@ int main(){
 	void buscaListaSimples(celula **pRecebido);
 	void removeElementoListaSimples(celula **pRecebido);
 	void calculaMedia(celula **pRecebido);
-	
+	void encontraElementos(celula **pRecebido);
 	
 	// Instruções
 	pLista[nLista] = (celula *)malloc(sizeof(struct celulaLista));
 	initLista(&pLista[nLista]);
 	do{
-		printf("\n Numero da Lista atua: %d\n\n"nListas++);
+		printf("\nNumero da Lista atua: %d\n\n",(nLista+1));
 		printf("0 - Sair\n");
 		printf("1 - Inserir  \n");
 		printf("2 - Consultar \n");
@@ -41,6 +42,7 @@ int main(){
 		printf("5 - Adcionar lista\n");
 		printf("6 - Ir para lista anterior\n");
 		printf("7 - Ir para proxima lista\n");
+		printf("8 - procurar elementos nessa lista\n");
 		scanf("%d", &continuar);
 		switch(continuar){
 			case 1:
@@ -56,7 +58,8 @@ int main(){
 				calculaMedia(&pLista[nLista]);
 				break;
 			case 5:
-				nListas++;
+				nLista++;
+				ntLista++;
 				pLista[nLista] = (celula *)malloc(sizeof(struct celulaLista));
 				initLista(&pLista[nLista]);
 				break;
@@ -69,10 +72,10 @@ int main(){
 				break;
 			case 7:
 				//PAROU AQUI
-			if(pLista[nLista]){
-				printf("Esta e a primeira lista.");
+				if(nLista < ntLista){
+						nLista++;
 				}else{
-					nLista--;
+					printf("Esta e a ultima lista.");
 				}
 				break;
 			case 0:
@@ -164,6 +167,34 @@ void removeElementoListaSimples(celula **pRecebido){
       }
 }
 /*
-   Opção para Validação da Entrada
+   Encontrar elementos
 */
 
+void encontraElementos(celula **pRecebido){
+	// Declarações
+	celula *temporario;
+	int valor;
+	bool find = 0;
+	printf("\nInforme um Valor a ser Inserido : ");
+	scanf("%d", &valor);
+	
+	// Instruções
+	if((*pRecebido)->proximo == NULL){
+		printf("Lista Vazia!\n");
+	}
+	else{
+		temporario = (celula *)malloc(sizeof(celula));
+		temporario = (*pRecebido)->proximo;
+		while(temporario != NULL){
+			if(valor == temporario->informacao){
+				find = 1;
+			} 
+			temporario = temporario->proximo;
+		}
+		if(find = 1){
+			printf("Elemento encontrado nessa lista");
+		}else{
+			printf("Elemento nao encontrado nessa lista");
+		}
+	}
+}
