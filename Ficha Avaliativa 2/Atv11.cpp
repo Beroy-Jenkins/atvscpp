@@ -6,7 +6,6 @@
 	int *p, *q;
 	
 	};
-   //struct teste1;
 int main() {
 
 	struct teste infoTeste;
@@ -16,18 +15,23 @@ int main() {
 	struct teste *ponteiroTeste;
 	infoTeste.p = &infoTeste.i;
 	infoTeste.q = &infoTeste.j;
-	//infoTeste.q = &teste.j;
 	ponteiroTeste = &infoTeste;
 
-	printf("%d",infoTeste.i);
+	//a) infoTeste.i, &infoTeste.i;
+	printf("\nSaida: 21, 6afd60");
+	//b) infoTeste.j, &infoTeste.j; 
+	printf("\nSaida: 9, 6afd64");
+	//c) infoTeste.p, &infoTeste.p, *infoTeste.p;
+	printf("\nSaida: 6afd60, 6afd68, 21");
+	//d) infoTeste.q, &infoTeste.q, *infoTeste.q; 
+	printf("\nSaida: 6afd64, 6afd70, 9");
+	//e) ponteiroTeste, &ponteiroTeste;
+	printf("\nSaida: 6afd60,6afd58");
+	//f) ponteiroTeste->i, ponteiroTeste->j, ponteiroTeste->p, ponteiroTeste->q,  
+	printf("\nSaida: 21, 9 , 6afd60, 6afd64");
+	//g) *ponteiroTeste->p, *ponteiroTeste->q
+	printf("\nSaida: 21, 9");
+	
 	getch();
 }
-/*
-a) infoTeste.i, &infoTeste.i;
-b) infoTeste.j, &infoTeste.j; 
-c) infoTeste.p, &infoTeste.p, *infoTeste.p; 
-d) infoTeste.q, &infoTeste.q, *infoTeste.q; 
-e) ponteiroTeste, &ponteiroTeste; 
-f) ponteiroTeste->i, ponteiroTeste->j, ponteiroTeste->p, ponteiroTeste->q, 
-g) *ponteiroTeste->p, *ponteiroTeste->q
-*/
+

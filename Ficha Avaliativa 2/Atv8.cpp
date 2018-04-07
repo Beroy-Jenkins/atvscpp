@@ -17,6 +17,8 @@ int main() {
 	printf("\nd) %x",pt);
 //e) ( ) ao se alterar o valor de i, *pt será modificado
 	i = 25;
+	
+	printf("\nEndereco pt= %x",&pt);
 	printf("\ne) %d",*pt);
 	printf("\n Alternativa false = d)");
 	getch();
