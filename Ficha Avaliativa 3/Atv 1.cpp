@@ -81,6 +81,9 @@ void insertLista(celula **pRecebido){
 void buscaListaSimples(celula **pRecebido){
    // Declarações
       celula *temporario;
+      
+      printf("**** buscaListaSimples\n");
+
    // Instruções
       if((*pRecebido)->proximo == NULL){
          printf("Lista Vazia!\n");
