@@ -17,11 +17,11 @@ typedef struct celulaLista{
 	int ntLista = 2;
 
 int main(){
-	printf("XXXXXXXXXX\nX\nX\nX\nXXXXXXXXXX\n");
+	printf("XXXXXX 	XXXXXXX	XXXXXX	   XX    X       X\nX     X	X      	X     X	  X  X    X     X\nX     X	X      	X    X 	 X    X    X   X\nXXXXXX 	XXXX   	XXXX   	X      X     X\nX     X	X      	X   X  	 X    X      X\nX     X	X      	X    X    X  X       X\nXXXXXX 	XXXXXXX	X     X	   XX        X");
+
 	// Declarações
 	celula *pLista[nLista];
 	int continuar = 0;
-
 	// Funções
 	void initLista(celula **pRecebido);
 	void insertLista(celula **pRecebido);
@@ -34,6 +34,8 @@ int main(){
 	// Instruções
 	pLista[nLista] = (celula *)malloc(sizeof(struct celulaLista));
 	initLista(&pLista[nLista]);	
+
+/*
 	//nLista++;
 	//pLista[nLista] = (celula *)malloc(sizeof(struct celulaLista));
 	//initLista(&pLista[nLista]);	
@@ -42,6 +44,11 @@ int main(){
 	buscaListaSimples(&pLista[0]);
 	buscaListaSimples(&pLista[1]);
 	buscaListaSimples(&pLista[2]);
+	
+*/	
+	
+	
+	
 	
 	do{
 		printf("\nNumero da Lista atua: %d\n\n",(nLista+1));
@@ -94,7 +101,7 @@ int main(){
 				encontraElementos(&pLista[nLista]);
 				break;
 			case 15:
-				ntLista = 10;
+				ntLista = 3;
 				cargaInicial(pLista, ntLista);
 				break;
 			case 0:
@@ -111,7 +118,6 @@ int main(){
 */
 void initLista(celula **pRecebido){
 	//pRecebido = (celula *)malloc(sizeof(struct celulaLista));
-	(*pRecebido)->informacao = 0;
 	(*pRecebido)->proximo = NULL;
 }
 /*
@@ -200,7 +206,7 @@ void insertLista(celula **pRecebido){
 	scanf("%d", &valor);
 	/*
 	temporario = (celula *)malloc(sizeof(celula));
-	temporario->informacao = valor;
+	temporario->informacao = valor; 
 	temporario->proximo = (*pRecebido)->proximo;
 	(*pRecebido)->proximo = temporario;
 	*/
@@ -230,7 +236,7 @@ void buscaListaSimples(celula **pRecebido){
       }
       else{
          temporario = (celula *)malloc(sizeof(celula));
-         temporario = (*pRecebido);
+         temporario = (*pRecebido)->proximo;
          while(temporario != NULL){
             printf("Valor : %d\n", temporario->informacao);
             temporario = temporario->proximo;
